@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
 
-export default function App() {
+import { useFonts } from "expo-font";
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { NavigationContainer } from "@react-navigation/native";
+import Router from "./src/router/index";
+import { config } from "@gluestack-ui/config";
+
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"), // Adjust the path
+  });
+
+  if (!fontsLoaded) {
+    // Font is still loading, return a loading indicator or null
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GluestackUIProvider config={config}>
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
+    </GluestackUIProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
