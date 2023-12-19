@@ -8,6 +8,7 @@ import { config } from "@gluestack-ui/config";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
+    "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"), // Adjust the path
     "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"), // Adjust the path
   });
 

@@ -7,7 +7,7 @@ const Splash = ({ navigation }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate("Login"); // Gantilah "Login" dengan rute yang diinginkan
+      navigation.navigate("GetStarted"); // Gantilah "Login" dengan rute yang diinginkan
     }, 3000); // Waktu tunda dalam milidetik (3000 milidetik = 3 detik)
 
     // Membersihkan timeout jika komponen di-unmount sebelum waktu tunda berakhir
