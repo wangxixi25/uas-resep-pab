@@ -10,6 +10,7 @@ const App = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"), // Adjust the path
     "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"), // Adjust the path
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"), // Adjust the path
   });
 
   if (!fontsLoaded) {
