@@ -33,7 +33,7 @@ const Splash = ({ navigation }) => {
             {/* Box for the logo */}
             <Box>
               <Image
-                source={require("../../assets/icons/iconlogo.png")}
+                source={require("../../assets/icons/DietDelight.png")}
                 style={{ width: 300, height: 300, marginBottom: 10 }}
               />
             </Box>

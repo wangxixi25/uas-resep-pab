@@ -29,8 +29,10 @@ const GetStarted = ({ navigation }) => {
           Cooking{"\n"}
           Time!
         </Text>
-        <Text fontSize={14}>Presenting delicious low-calorie recipes.</Text>
-        <Text fontSize={14} mb={40}>
+        <Text fontSize={12} fontFamily="Poppins-Regular">
+          Presenting delicious low-calorie recipes.
+        </Text>
+        <Text fontSize={12} mb={40} fontFamily="Poppins-Regular">
           "Enjoy Healthy Food, Stay Ideal"
         </Text>
       </Box>
