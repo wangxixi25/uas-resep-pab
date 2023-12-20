@@ -13,10 +13,10 @@ import BackFAB from "../../components/kecil/back_fab";
 
 const Register = ({ navigation }) => {
   return (
-    <Box flex={1} backgroundColor="$blue400" justifyContent="center">
+    <Box flex={1} backgroundColor="white" justifyContent="center">
       <BackFAB />
       <Box
-        shadowColor="$black"
+        shadowColor="$white"
         shadowOffset={{ width: 0, height: 2 }}
         shadowOpacity={"$25"}
         shadowRadius={"$3.5"}
@@ -27,8 +27,8 @@ const Register = ({ navigation }) => {
         marginHorizontal={"$6"}
         p={"$5"}
       >
-        <Text size="3xl" color="$black" fontWeight="bold">
-          Hello~
+        <Text size="3xl" color="#038861" fontWeight="bold">
+          Create an Account
         </Text>
         <Text size="sm" color="$black" my={"$1"}>
           Sign up to continue!
@@ -41,18 +41,18 @@ const Register = ({ navigation }) => {
             height={"$10"}
           />
           <Input
-            label="Email"
+            label="Email Address"
             value={null}
             onChangeText={() => {}}
             height={"$10"}
           />
-          <Input
+          {/* <Input
             label="No. Handphone"
             keyboardType="phone-pad"
             value={null}
             onChangeText={() => {}}
             height={"$10"}
-          />
+          /> */}
           <Input
             label="Password"
             secureTextEntry
@@ -63,6 +63,7 @@ const Register = ({ navigation }) => {
         </FormControl>
         <Box flexDirection="column" my={"$5"}>
           <Button
+            color="#038861"
             title="Register"
             type="text"
             icon="submit"

@@ -6,7 +6,7 @@ const Button = ({ padding, title, onPress, fontSize }) => {
     <Pressable
       onPress={onPress}
       padding={padding}
-      backgroundColor="$green600"
+      backgroundColor="#038861"
       borderRadius={"$xl"}
       my={"$3"}
     >

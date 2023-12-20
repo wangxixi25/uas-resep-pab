@@ -7,7 +7,7 @@ const CategoryTab = ({ padding, title, onPress, fontSize, margin }) => {
       onPress={onPress}
       padding={padding}
       margin={margin}
-      backgroundColor="$blue700"
+      backgroundColor="#038861"
       borderRadius={"$lg"}
     >
       <Text

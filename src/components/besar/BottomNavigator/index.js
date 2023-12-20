@@ -12,7 +12,7 @@ const BottomNavigator = ({ state, descriptors, navigation }) => {
       paddingHorizontal={"$5"}
       margin={"$2"}
       flexDirection="row"
-      backgroundColor="$blue"
+      backgroundColor="$white"
       hardShadow="5"
       borderRadius={"$xl"}
       justifyContent="space-around"

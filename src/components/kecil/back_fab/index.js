@@ -4,9 +4,9 @@ import React from "react";
 
 const BackFAB = () => {
   return (
-    <Fab rounded={"$xl"} size="lg" placement="top left" onPress={useNavigation().goBack} mt={"$7"}>
+    <Fab rounded={"$xl"}  style={{ backgroundColor: 'green' }}  size="sm" placement="top left" onPress={useNavigation().goBack} mt={"$7"}>
         <FabIcon as={ArrowLeftIcon} mr={"$2"} />
-        <FabLabel fontWeight="bold">Kembali</FabLabel>
+        <FabLabel fontWeight="bold"></FabLabel>
       </Fab>
   );
 };

@@ -1,4 +1,4 @@
-import { Text, Pressable, Box } from "@gluestack-ui/themed";
+import { Text, Pressable,  } from "@gluestack-ui/themed";
 import React from "react";
 import { IconHome, IconHomeActive, IconProfile, IconProfileActive, IconAdd, IconAddActive } from "../../../assets";
 
@@ -18,7 +18,7 @@ const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
   return (
     <Pressable onPress={onPress} onLongPress={onLongPress} alignItems="center" flexDirection="column" justifyContent="space-between">
         <Icon />
-        <Text color={isFocused ? "$white" : "$lightBlue400"} fontSize={"$md"} marginTop={"$2"}>{label}</Text>
+        <Text color={isFocused ? "$black" : "#038861"} fontSize={"$md"} marginTop={"$0"}>{label}</Text>
     </Pressable>
   );
 };
