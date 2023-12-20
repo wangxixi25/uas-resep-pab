@@ -44,10 +44,10 @@ const Add = ({ navigation }) => {
           pt={"$2"}
         >
           <Heading size="2xl" color="$black">
-            Add New Task!
+            Add New Resep!
           </Heading>
           <Text size="sm" color="$black" my={"$1"}>
-            Add your new task here!
+            Add your new Resep here!
           </Text>
           <FormControl>
             <Input

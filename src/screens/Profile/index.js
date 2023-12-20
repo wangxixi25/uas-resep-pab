@@ -49,7 +49,7 @@ const Profile = ({ navigation }) => {
               Email
             </Text>
             <Text color="$black" fontSize={"$xl"} mt={"$2"}>
-              Lorem Ipsum
+              Fitri Rayani Siahaan
             </Text>
           </Box>
           <Box mt={"$5"}>
@@ -57,7 +57,7 @@ const Profile = ({ navigation }) => {
               Nomor Ponsel
             </Text>
             <Text color="$black" fontSize={"$xl"} mt={"$2"}>
-              Lorem Ipsum
+              082166864216
             </Text>
           </Box>
         </Box>

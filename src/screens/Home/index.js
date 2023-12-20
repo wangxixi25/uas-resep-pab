@@ -6,16 +6,14 @@ const Home = ({ navigation }) => {
   const [userNotes, setUserNotes] = useState([
     {
       noteId: 1,
-      title: "Note 1",
-      content: "Lorem ipsum...",
-      status: "Active",
+      title: "Cream Soup",
+      content: "A low-Calory cream soup with corn, delivering savory delight in a single serving of approximately 90 calories. Ideal for a light diet menu.",
       category: "Work",
     },
     {
       noteId: 2,
       title: "Note 2",
       content: "Lorem ipsum...",
-      status: "Inactive",
       category: "Personal",
     },
     {
@@ -35,10 +33,9 @@ const Home = ({ navigation }) => {
     // Add more dummy notes as needed
   ]);
   const [category, setCategory] = useState([
-    "Work",
-    "Personal",
-    "Study",
-    "Others",
+    "Heavy meal",
+    "Dessert",
+    "Drinks",
   ]); // Replace with your desired categories
   const [selectedCategory, setSelectedCategory] = useState(null);
 

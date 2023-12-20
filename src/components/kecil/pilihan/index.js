@@ -79,9 +79,9 @@ const Pilihan = ({
               >
                 <SelectDragIndicator />
               </SelectDragIndicatorWrapper>
-              <SelectItem label={"Dummy"} value={null} />
-              <SelectItem label={"Dummy"} value={null} />
-              <SelectItem label={"Dummy"} value={null} />
+              <SelectItem label={"Heavy meal"} value={null} />
+              <SelectItem label={"Drinks"} value={null} />
+              <SelectItem label={"Desert"} value={null} />
             </SelectContent>
           </SelectPortal>
         </Select>
