@@ -6,12 +6,15 @@ import {
   VStack,
   HStack,
   Heading,
+  Image
 } from "@gluestack-ui/themed";
 import { IconDelete, IconEdit } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 const ListNote = ({
   judul,
+  image,
   isi,
   tanggal,
   status,
@@ -24,13 +27,13 @@ const ListNote = ({
   const handleEditClick = () => {
     navigation.navigate("EditNote", {
       judul,
+      image,
       isi,
       category,
       status,
       noteId,
     });
   };
-
   const handleDeleteClick = () => {
     onDelete(noteId);
     navigation.replace("MainApp");
@@ -38,54 +41,49 @@ const ListNote = ({
 
   return (
     <Box
-      shadowColor="$black"
-      shadowOffset={{ width: 0, height: 2 }}
-      shadowOpacity={"$25"}
-      shadowRadius={"$3.5"}
-      elevation={"$5"}
-      backgroundColor="$white"
-      padding={"$2"}
-      width={"$full"}
-      borderRadius={"$xl"}
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      my={"$2"}
-      px={"$5"}
-      py={"$3"}
+      bgColor="#038861"
+      padding={15}
+      marginBottom={13}
+      height={'auto'}
+      rounded={10}
     >
-      <VStack>
-        <Heading size="2xl">{judul}</Heading>
-        <Text size="md" maxWidth={"$64"}>
-          {isi}
-        </Text>
-        <Box
-          shadowColor="$black"
-          shadowOffset={{ width: 0, height: 2 }}
-          shadowOpacity={"$25"}
-          shadowRadius={"$3.5"}
-          elevation={"$5"}
-          backgroundColor="$green700"
-          borderRadius={"$lg"}
-          py={"$2"}
-          px={"$3"}
-          alignItems="center"
-          justifyContent="center"
-          mt={"$3"}
-        >
-          <Text color="$white" fontWeight="$bold">
-            {status}
-          </Text>
-        </Box>
-      </VStack>
-      <HStack>
+      <HStack space="lg">
+        <Image alt="cover" w={80} height={90} rounded={10} source={{ uri:  image  }} />
+        <VStack>
+          <Heading color="white">{judul}</Heading>
+          <Box width={200}>
+            <Text color="white" fontSize={10}>
+              {isi}
+            </Text>
+          </Box>
+          <HStack mt={10} space="lg">
+            <HStack bgColor="#FFD542" p={5} width={80} alignItems="center" rounded={20} justifyContent="center" >
+
+              <Text fontSize={12}><Ionicons name="time-outline" size={14} color="black" /> 30 Min</Text>
+            </HStack>
+            <HStack bgColor="#FFD542" p={5} width={80} alignItems="center" rounded={20} justifyContent="center" >
+              
+              <Text fontSize={12}><FontAwesome name="fire" size={14} color="black" /> 30 Min</Text>
+            </HStack>
+          </HStack>
+
+          <Box
+          >
+            {/* <Text color="$white" fontWeight="$bold">
+              {status}
+            </Text> */}
+          </Box>
+        </VStack>
+      </HStack>
+
+      {/* <HStack>
         <Pressable onPress={handleEditClick}>
           <IconEdit />
         </Pressable>
         <Pressable onPress={handleDeleteClick}>
           <IconDelete />
         </Pressable>
-      </HStack>
+      </HStack> */}
     </Box>
   );
 };

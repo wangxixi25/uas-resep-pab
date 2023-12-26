@@ -5,6 +5,9 @@ import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { NavigationContainer } from "@react-navigation/native";
 import Router from "./src/router/index";
 import { config } from "@gluestack-ui/config";
+import { Home } from "./src/screens";
+import Add from "./src/screens";
+import Profile from "./src/screens";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
