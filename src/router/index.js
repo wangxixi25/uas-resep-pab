@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   GetStarted,
+  DetailRecipe,
 } from "../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import BottomNavigator from "../components/besar/BottomNavigator";
@@ -65,6 +66,11 @@ const Router = () => {
       <Stack.Screen
         name="EditNote"
         component={EditNote}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DetailRecipe"
+        component={DetailRecipe}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
