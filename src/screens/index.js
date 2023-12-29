@@ -6,5 +6,5 @@ import Register from "./Register";
 import Splash from "./Splash";
 import EditNote from "./EditNote";
 import GetStarted from "./GetStarted";
-
-export { Home, Profile, Add, Login, Register, Splash, EditNote, GetStarted };
+import EditResep from  "./EditResep"
+export { Home, Profile, Add, Login, Register, Splash, EditNote, GetStarted, EditResep, };
