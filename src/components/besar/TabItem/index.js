@@ -1,24 +1,48 @@
-import { Text, Pressable,  } from "@gluestack-ui/themed";
-import React from "react";
-import { IconHome, IconHomeActive, IconProfile, IconProfileActive, IconAdd, IconAddActive } from "../../../assets";
+// TabItem.js
+import React, { useEffect, useState } from "react";
+import { Text, Pressable } from "@gluestack-ui/themed";
+import {
+  IconHome,
+  IconHomeActive,
+  IconProfile,
+  IconProfileActive,
+  IconAdd,
+  IconAddActive,
+} from "../../../assets";
 
 const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
+  const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    setSelected(isFocused);
+  }, [isFocused]);
+
   const Icon = () => {
-    if (label === "Home") {
-      return isFocused ? <IconHomeActive /> : <IconHome />;
-    }
-    if (label === "Add") {
-      return isFocused ? <IconAddActive /> : <IconAdd />;
-    }
-    if (label === "Profile") {
-      return isFocused ? <IconProfileActive /> : <IconProfile />;
-    }
-    return <IconHome />;
+    const icons = {
+      Home: selected ? <IconHomeActive /> : <IconHome />,
+      Add: selected ? <IconAddActive /> : <IconAdd />,
+      Profile: selected ? <IconProfileActive /> : <IconProfile />,
+    };
+
+    return icons[label] || <IconHome />;
   };
+
   return (
-    <Pressable onPress={onPress} onLongPress={onLongPress} alignItems="center" flexDirection="column" justifyContent="space-between">
-        <Icon />
-        <Text color={isFocused ? "$black" : "#038861"} fontSize={"$md"} marginTop={"$0"}>{label}</Text>
+    <Pressable
+      onPress={onPress}
+      onLongPress={onLongPress}
+      alignItems="center"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
+      <Icon />
+      <Text
+        color={selected ? "$black" : "#038861"}
+        fontSize={"$md"}
+        marginTop={"$0"}
+      >
+        {label}
+      </Text>
     </Pressable>
   );
 };
