@@ -5,7 +5,7 @@ import { useTheme, Box, Text, Button } from "@gluestack-ui/themed";
 const GetStarted = ({ navigation }) => {
   const theme = useTheme();
   const windowWidth = Dimensions.get("window").width;
-
+ 
   return (
     <Box flex={1} alignItems="center">
       {/* Top Section with Image */}
