@@ -29,14 +29,15 @@ const Home = ({ navigation }) => {
       image:
         "https://myfoodstory.com/wp-content/uploads/2017/12/Homemade-Creamy-Vegetable-Soup-2-1.jpg",
       title: "Cream Soup",
-      content: "A low-Calory cream soup with corn.asdasd das",
+      content:
+        "A low-Calory cream soup with corn. Delivering savory delight in a single serving of approximately 90 calories. Ideal for a light diet menu",
       category: "Work",
     },
     {
       noteId: 2,
       image:
         "https://myfoodstory.com/wp-content/uploads/2017/12/Homemade-Creamy-Vegetable-Soup-2-1.jpg",
-      title: "Note 2",
+      title: "lemon tea",
       content: "Lorem ipsum...",
       category: "Personal",
     },
@@ -124,7 +125,7 @@ const Home = ({ navigation }) => {
                 height={55}
                 width={150}
               >
-                <Image source={require("../../assets/images/meal.png")} />
+                <Ionicons name="fast-food-outline" size={22} color="white" />
                 <Text color="white">Heavy meal</Text>
               </HStack>
               <HStack

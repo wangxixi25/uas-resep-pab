@@ -8,3 +8,4 @@ import EditNote from "./EditNote";
 import GetStarted from "./GetStarted";
 import EditResep from  "./EditResep"
 export { Home, Profile, Add, Login, Register, Splash, EditNote, GetStarted, EditResep, };
+

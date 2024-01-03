@@ -1,8 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { Box, Text, Image, VStack, ScrollView } from "@gluestack-ui/themed";
 import { Button } from "../../components";
+import { clearStorage, getData } from "../../utils";
+import FIREBASE from "../../config/FIREBASE";
 
 const Profile = ({ navigation }) => {
+  const [profile, setProfile] = useState(null);
+
+  const getUserData = () => {
+    getData("user").then((res) => {
+      const data = res;
+      if (data) {
+        console.log("isi data", data);
+        setProfile(data);
+      } else {
+        // navigation.replace('Login');
+      }
+    });
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      getUserData();
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [navigation]);
+
+  const onSubmit = (profile) => {
+    if (profile) {
+      FIREBASE.auth()
+        .signOut()
+        .then(() => {
+          // Sign-out successful.
+          clearStorage();
+          navigation.replace("MainApp");
+        })
+        .catch((error) => {
+          // An error happened.
+          alert(error);
+        });
+    } else {
+      navigation.replace("Login");
+    }
+  };
+
   return (
     <Box
       mt={"$5"}
@@ -27,7 +70,7 @@ const Profile = ({ navigation }) => {
             marginTop={"$5"}
             fontWeight="$bold"
           >
-            Nama User
+            {profile?.nama}
           </Text>
         </VStack>
         <Box
@@ -49,7 +92,7 @@ const Profile = ({ navigation }) => {
               Email
             </Text>
             <Text color="$black" fontSize={"$xl"} mt={"$2"}>
-              Fitri Rayani Siahaan
+              {profile?.email}
             </Text>
           </Box>
           <Box mt={"$5"}>
@@ -57,17 +100,15 @@ const Profile = ({ navigation }) => {
               Nomor Ponsel
             </Text>
             <Text color="$black" fontSize={"$xl"} mt={"$2"}>
-              082166864216
+              {profile?.nohp}
             </Text>
           </Box>
         </Box>
         <Button
           type="text"
-          title={"Login"}
+          title={profile ? "Logout" : "Login"}
           padding={"$3"}
-          onPress={() => {
-            navigation.navigate("Login");
-          }}
+          onPress={() => onSubmit(profile)}
         />
       </ScrollView>
     </Box>

@@ -10,8 +10,39 @@ import {
   ModalBackdrop,
 } from "@gluestack-ui/themed";
 import { Input, Button } from "../../components";
+import { loginUser } from "../../actions/AuthAction";
+import { TouchableOpacity } from "react-native";
 
 const Login = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const toggleAlert = (message) => {
+    setShowAlert(!showAlert);
+    setAlertMessage(message);
+  };
+  const login = () => {
+    if (email && password) {
+      loginUser(email, password)
+        .then((user) => {
+          // Pengguna berhasil login, lakukan sesuatu dengan data pengguna jika perlu
+          navigation.replace("MainApp");
+        })
+        .catch((error) => {
+          // Terjadi kesalahan saat login, tampilkan pesan kesalahan
+          console.log("Error", error.message);
+          toggleAlert(error.message);
+        });
+    }
+  };
+
+  const handleSignUpClick = () => {
+    // Navigate to the Register page
+    navigation.navigate("Register");
+  };
+
   return (
     <Box flex={1} backgroundColor="$white" justifyContent="center">
       <Box
@@ -34,19 +65,18 @@ const Login = ({ navigation }) => {
         </Text>
         <FormControl>
           <Input
-            label={"Email Address"}
+            label={"email"}
             width={"$full"}
             height={"$10"}
-            onChangeText={() => {}} // Set email ke dalam state
-            value={null}
+            onChangeText={(text) => setEmail(text)} // Set email ke dalam state
+            value={email}
           />
           <Input
             label="Password"
             width={"$full"}
             height={"$10"}
-            secureTextEntry={true}
-            onChangeText={() => {}} // Set password ke dalam state
-            value={null}
+            onChangeText={(text) => setPassword(text)} // Set password ke dalam state
+            value={password}
           />
         </FormControl>
         <Box flexDirection="column" my={"$5"}>
@@ -55,10 +85,7 @@ const Login = ({ navigation }) => {
             type="text"
             width={"$full"}
             padding={"$3"}
-            onPress={() => {
-              navigation.navigate("MainApp");
-            }}
-
+            onPress={() => login()}
           />
           {/* <Text size="sm" color="$black" mt={"$4"}>
             Don't have an account?
@@ -71,24 +98,21 @@ const Login = ({ navigation }) => {
               navigation.navigate("Register");
             }}
           /> */}
-
         </Box>
       </Box>
       {/* <Heading size="3xl" color="#038861">
           Welcome Back !
         </Heading> */}
-        <Text size="sm" color="$black" my={"$1"} textAlign={"center"}>
-          Log in to My account
-          
-        </Text>
-        <Text size="sm" color="$black" my={"$1"} textAlign={"center"}>
-          Don't have an account ? Sign Up
-          {/* <text color="$red"> Sign Up</text> */}
-         
-          
-        </Text>
+      <Text size="sm" color="$black" my={"$1"} textAlign={"center"}>
+        Log in to My account
+      </Text>
+      <Text size="sm" color="$black" my={"$1"} textAlign={"center"}>
+        Don't have an account?{" "}
+        <TouchableOpacity onPress={handleSignUpClick}>
+          <Text style={{ textDecorationLine: "underline" }}>Sign Up</Text>
+        </TouchableOpacity>
+      </Text>
     </Box>
-    
   );
 };
 
