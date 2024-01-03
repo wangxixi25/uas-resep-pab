@@ -47,7 +47,6 @@ const Home = ({ navigation }) => {
         "https://myfoodstory.com/wp-content/uploads/2017/12/Homemade-Creamy-Vegetable-Soup-2-1.jpg",
       title: "Note 3",
       content: "Lorem ipsum...",
-      status: "Active",
       category: "Work",
     },
     {
@@ -56,7 +55,6 @@ const Home = ({ navigation }) => {
         "https://myfoodstory.com/wp-content/uploads/2017/12/Homemade-Creamy-Vegetable-Soup-2-1.jpg",
       title: "Note 4",
       content: "Lorem ipsum...",
-      status: "Active",
       category: "Study",
     },
     // Add more dummy notes as needed
