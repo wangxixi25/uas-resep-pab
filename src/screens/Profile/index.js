@@ -114,6 +114,7 @@ const Profile = ({ navigation }) => {
       </ScrollView>
     </Box>
   );
+
 };
 
 export default Profile;

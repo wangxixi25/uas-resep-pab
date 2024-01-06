@@ -14,6 +14,7 @@ import { Input, Button } from "../../components";
 import { registerUser } from "../../actions/AuthAction";
 import { TouchableOpacity } from "react-native";
 
+
 const Register = ({ navigation }) => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");

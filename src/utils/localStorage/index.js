@@ -25,3 +25,4 @@ export const getData = async (key) => {
 export const clearStorage = async() =>{
   AsyncStorage.clear();
 }
+
