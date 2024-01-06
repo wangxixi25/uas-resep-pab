@@ -12,7 +12,7 @@ const Profile = ({ navigation }) => {
 			marginTop={"$20"}
 			flexDirection="column">
 			<ScrollView>
-				<VStack backgroundColor="$blueGray100" width={"$full"} mb={"$10"}>
+				<VStack backgroundColor="$blueGray100" width={"$full"} mb={"$0"}>
 					<Image
 						source={require("../../assets/images/avatar.png")}
 						size="2xl"
@@ -46,7 +46,7 @@ const Profile = ({ navigation }) => {
 							Email
 						</Text>
 						<Text color="$black" fontSize={"$xl"} mt={"$2"}>
-							Fitri Rayani Siahaan
+							Account name
 						</Text>
 					</Box>
 					<Box mt={"$5"}>
