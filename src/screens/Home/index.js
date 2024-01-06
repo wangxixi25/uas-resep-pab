@@ -360,6 +360,7 @@ const Home = ({ navigation }) => {
 							</ScrollView> */}
 
 						{/* <FlatList
+
         data={category}
         renderItem={({ item, index }) => (
           <CategoryTab

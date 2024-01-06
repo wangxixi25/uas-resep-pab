@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Text, Image, VStack, ScrollView } from "@gluestack-ui/themed";
 import { Button } from "../../components";
+import { clearStorage, getData } from "../../utils";
+import FIREBASE from "../../config/FIREBASE";
 
 const Profile = ({ navigation }) => {
 	return (
@@ -69,6 +71,7 @@ const Profile = ({ navigation }) => {
 			</ScrollView>
 		</Box>
 	);
+
 };
 
 export default Profile;

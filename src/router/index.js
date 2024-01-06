@@ -10,6 +10,7 @@ import {
 	GetStarted,
 	DetailResep,
 	ResepPerCategory,
+
 } from "../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import BottomNavigator from "../components/besar/BottomNavigator";
@@ -81,6 +82,7 @@ const Router = () => {
 			/>
 		</Stack.Navigator>
 	);
+
 };
 
 export default Router;

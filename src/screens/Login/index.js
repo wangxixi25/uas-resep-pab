@@ -10,8 +10,11 @@ import {
 	ModalBackdrop,
 } from "@gluestack-ui/themed";
 import { Input, Button } from "../../components";
+import { loginUser } from "../../actions/AuthAction";
+import { TouchableOpacity } from "react-native";
 
 const Login = ({ navigation }) => {
+
 	return (
 		<Box flex={1} backgroundColor="$white" justifyContent="center">
 			<Box
@@ -59,6 +62,7 @@ const Login = ({ navigation }) => {
 						}}
 					/>
 					{/* <Text size="sm" color="$black" mt={"$4"}>
+
             Don't have an account?
           </Text> */}
 					{/* <Button
@@ -83,6 +87,7 @@ const Login = ({ navigation }) => {
 			</Text>
 		</Box>
 	);
+
 };
 
 export default Login;
