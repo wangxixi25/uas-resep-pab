@@ -1,11 +1,13 @@
-
 import { Alert } from "react-native";
-import FIREBASE from "../config/FIREBASE";
-import { clearStorage, getData, storeData } from "../utils/localStorage";
+import FIREBASE from "../../src/config/FIREBASE";
+import { clearStorage, getData, storeData } from "../../src/utils/localStorage";
 
 export const registerUser = async (data, password) => {
   try {
-    const success = await FIREBASE.auth().createUserWithEmailAndPassword(data.email, password);
+    const success = await FIREBASE.auth().createUserWithEmailAndPassword(
+      data.email,
+      password
+    );
 
     const dataBaru = {
       ...data,
@@ -25,7 +27,10 @@ export const registerUser = async (data, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const success = await FIREBASE.auth().signInWithEmailAndPassword(email, password);
+    const success = await FIREBASE.auth().signInWithEmailAndPassword(
+      email,
+      password
+    );
     const resDB = await FIREBASE.database()
       .ref("/users/" + success.user.uid)
       .once("value");

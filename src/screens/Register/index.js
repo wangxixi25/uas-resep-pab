@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Image,
   Box,
   Alert,
   FormControl,
@@ -8,9 +9,11 @@ import {
   ModalBackdrop,
   AlertText,
 } from "@gluestack-ui/themed";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Input, Button } from "../../components";
-import BackFAB from "../../components/kecil/back_fab";
 import { registerUser } from "../../actions/AuthAction";
+import { TouchableOpacity } from "react-native";
+
 
 const Register = ({ navigation }) => {
   const [nama, setNama] = useState("");
@@ -49,19 +52,30 @@ const Register = ({ navigation }) => {
 
   return (
     <Box flex={1} backgroundColor="white" justifyContent="center">
-      <BackFAB />
-      <Box
-        shadowColor="$white"
-        shadowOffset={{ width: 0, height: 2 }}
-        shadowOpacity={"$25"}
-        shadowRadius={"$3.5"}
-        elevation={"$5"}
-        backgroundColor="$white"
-        borderRadius={"$md"}
-        marginTop={"$10"}
-        marginHorizontal={"$6"}
-        p={"$5"}
+      <TouchableOpacity // Gunakan TouchableOpacity untuk aksi ketika diklik
+        onPress={() => navigation.goBack()} // Arahkan ke layar sebelumnya saat diklik
+        style={{
+          top: 3, // Sesuaikan dengan posisi vertikal yang Anda inginkan
+          left: 20, // Sesuaikan dengan posisi horizontal yang Anda inginkan
+        }}
       >
+        <MaterialCommunityIcons
+          name="keyboard-backspace"
+          size={25}
+          color="black"
+        />
+      </TouchableOpacity>
+      <Image
+        source={require("../../assets/images/logohijau.png")}
+        style={{
+          alignSelf: "center",
+          width: 150,
+          height: 150,
+          marginTop: 50,
+        }}
+        alt="Logohijau"
+      />
+      <Box marginTop={"$10"} marginHorizontal={"$6"} p={"$5"}>
         <Text size="3xl" color="#038861" fontWeight="bold">
           Create an Account
         </Text>
