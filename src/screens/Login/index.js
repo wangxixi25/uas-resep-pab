@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {
+
   Image,
   Box,
   Text,
@@ -9,6 +9,7 @@ import {
   ModalBackdrop,
   Alert,
   AlertText,
+
 } from "@gluestack-ui/themed";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Input, Button } from "../../components";
@@ -126,6 +127,7 @@ const Login = ({ navigation }) => {
       )}
     </Box>
   );
+
 };
 
 export default Login;

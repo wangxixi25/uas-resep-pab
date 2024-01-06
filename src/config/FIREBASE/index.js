@@ -4,6 +4,7 @@ import "firebase/compat/firestore";
 import "firebase/compat/database";
 
 firebase.initializeApp({
+
   apiKey: "AIzaSyDDunkau0Iv-t9wqPatB2lpIRh_UedLvmI",
   authDomain: "uasresep-ddcda.firebaseapp.com",
   databaseURL: "https://uasresep-ddcda-default-rtdb.firebaseio.com",
@@ -14,5 +15,6 @@ firebase.initializeApp({
 });
 
 const FIREBASE = firebase;
+
 
 export default FIREBASE;
