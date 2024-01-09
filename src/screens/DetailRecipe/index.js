@@ -4,6 +4,7 @@ import { Box, Image, Text, HStack } from "@gluestack-ui/themed";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
+export default DetailRecipe;
 
 const DetailRecipe = ({ route }) => {
   const data = route.params;
