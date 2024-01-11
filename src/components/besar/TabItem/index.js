@@ -8,6 +8,7 @@ import {
   IconProfileActive,
   IconAdd,
   IconAddActive,
+  IconMyResep,
 } from "../../../assets";
 
 const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
@@ -20,7 +21,7 @@ const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
   const Icon = () => {
     const icons = {
       Home: selected ? <IconHomeActive /> : <IconHome />,
-      Add: selected ? <IconAddActive /> : <IconAdd />,
+      MyRecipes: selected ? <IconMyResep /> : <IconMyResep />,
       Profile: selected ? <IconProfileActive /> : <IconProfile />,
     };
 
