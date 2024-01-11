@@ -8,7 +8,9 @@ import {
   Login,
   Register,
   GetStarted,
-  DetailRecipe,
+  DetailResep,
+  ResepPerCategory,
+  MyResep,
 } from "../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import BottomNavigator from "../components/besar/BottomNavigator";
@@ -25,7 +27,12 @@ const MainApp = () => {
         component={Home}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Add" component={Add} options={{ headerShown: false }} />
+
+      <Tab.Screen
+        name="MyRecipes"
+        component={MyResep}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -69,8 +76,23 @@ const Router = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="DetailRecipe"
-        component={DetailRecipe}
+        name="DetailResep"
+        component={DetailResep}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ResepPerCategory"
+        component={ResepPerCategory}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MyRecipes"
+        component={MyResep}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Add"
+        component={Add}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

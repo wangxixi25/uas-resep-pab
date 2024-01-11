@@ -23,6 +23,7 @@ const Profile = ({ navigation }) => {
     const unsubscribe = navigation.addListener("focus", () => {
       getUserData();
     });
+
     return () => {
       unsubscribe();
     };
@@ -113,6 +114,7 @@ const Profile = ({ navigation }) => {
       </ScrollView>
     </Box>
   );
+
 };
 
 export default Profile;

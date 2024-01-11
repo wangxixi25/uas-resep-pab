@@ -2,16 +2,20 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/database";
+import "firebase/compat/storage";
 
-firebase.initializeApp({
-    apiKey: "AIzaSyASBrjrdVUmB_yHnNa7HyMYDV73jMbjEus",
-    authDomain: "finalprojectfix-2ad38.firebaseapp.com",
-    projectId: "finalprojectfix-2ad38",
-    storageBucket: "finalprojectfix-2ad38.appspot.com",
-    messagingSenderId: "399814454216",
-    appId: "1:399814454216:web:2003f8bc08ed37ece22efd"
-});
+const firebaseConfig = {
+  apiKey: "AIzaSyDDunkau0Iv-t9wqPatB2lpIRh_UedLvmI",
+  authDomain: "uasresep-ddcda.firebaseapp.com",
+  databaseURL: "https://uasresep-ddcda-default-rtdb.firebaseio.com",
+  projectId: "uasresep-ddcda",
+  storageBucket: "uasresep-ddcda.appspot.com",
+  messagingSenderId: "1077157690944",
+  appId: "1:1077157690944:web:195dcfef617050d73ce9a5",
+};
 
-const FIREBASE = firebase;
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
-export default FIREBASE;
+export default firebase;

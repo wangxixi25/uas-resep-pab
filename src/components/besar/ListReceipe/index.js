@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   Pressable,
@@ -13,6 +13,7 @@ import {
 import { IconDelete, IconEdit } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
+import firebase from "firebase/compat";
 
 const ListNote = ({
   judul,
@@ -43,6 +44,36 @@ const ListNote = ({
     navigation.replace("MainApp");
   };
 
+  const [imageUrl, setImageUrl] = useState();
+
+  useEffect(() => {
+    // Di sini Anda perlu mengganti nilai filename sesuai dengan catatan resep yang sedang di-render
+    const filename = `${noteId}.jpg`; // Misalnya, gunakan noteId sebagai nama file (asumsi noteId adalah string)
+
+    // Mendapatkan referensi ke gambar di Firebase Storage
+    const storageRef = firebase.storage().ref().child(`images/${filename}`);
+    console.log("gambar" + storageRef);
+    // Mendapatkan URL download untuk gambar
+    storageRef
+      .getMetadata()
+      .then((metadata) => {
+        // The file metadata exists, so we can proceed to get the download URL
+        return storageRef.getDownloadURL();
+      })
+      .then((url) => {
+        // URL download gambar berhasil didapatkan
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        // Handle the case where the file or metadata does not exist
+        if (error.code === "storage/object-not-found") {
+          console.error("The file does not exist.");
+        } else {
+          console.error("Error fetching image URL:", error);
+        }
+      });
+  }, [noteId]);
+
   return (
     <Pressable
       onPress={() => {
@@ -59,13 +90,13 @@ const ListNote = ({
         rounded={10}
       >
         <HStack space="lg">
-          <Image
+          {/* <Image
             alt="cover"
             w={80}
             height={90}
             rounded={10}
-            source={{ uri: image }}
-          />
+            source={{ uri: imageUrl }}
+          /> */}
           <VStack minHeight={80} flex={1} justifyContent="space-between">
             <View style={{ width: "80%" }}>
               <Heading color="white" numberOfLines={2} ellipsizeMode="tail">

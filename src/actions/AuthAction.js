@@ -1,11 +1,13 @@
-
 import { Alert } from "react-native";
-import FIREBASE from "../config/FIREBASE";
-import { clearStorage, getData, storeData } from "../utils/localStorage";
+import FIREBASE from "../../src/config/FIREBASE";
+import { clearStorage, getData, storeData } from "../../src/utils/localStorage";
 
 export const registerUser = async (data, password) => {
   try {
-    const success = await FIREBASE.auth().createUserWithEmailAndPassword(data.email, password);
+    const success = await FIREBASE.auth().createUserWithEmailAndPassword(
+      data.email,
+      password
+    );
 
     const dataBaru = {
       ...data,
@@ -25,7 +27,10 @@ export const registerUser = async (data, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const success = await FIREBASE.auth().signInWithEmailAndPassword(email, password);
+    const success = await FIREBASE.auth().signInWithEmailAndPassword(
+      email,
+      password
+    );
     const resDB = await FIREBASE.database()
       .ref("/users/" + success.user.uid)
       .once("value");
@@ -55,54 +60,59 @@ export const logoutUser = () => {
     });
 };
 
-export const addNote = async (data) => {
-  try {
-    // Ambil data yg sudah login dari fungsi 'getData'
-    const userData = await getData("user");
+// export const addNote = async (data, image) => {
+//   try {
+//     const userData = await getData("user");
 
-    if (userData) {
-      // Tambah note sesuai uid
-      const dataBaru = {
-        ...data,
-        uid: userData.uid,
-      };
+//     if (userData) {
+//       const dataBaru = {
+//         ...data,
+//         uid: userData.uid,
+//       };
 
-      await FIREBASE.database()
-        .ref("notes/" + userData.uid)
-        .push(dataBaru);
+//       const noteRef = FIREBASE.database()
+//         .ref("notes/" + userData.uid)
+//         .push(dataBaru);
 
-      console.log("Note added successfully");
-    } else {
-      Alert.alert("Error", "Login Terlebih Dahulu");
-    }
-  } catch (error) {
-    throw error;
-  }
-};
+//       console.log("Note added successfully");
 
-export const getNote = async () => {
-  const userData = await getData("user");
-  const notesRef = FIREBASE.database().ref("notes/" + userData.uid);
+//       if (image) {
+//         const imageUrl = await uploadImage(image, noteRef.key); // Gunakan kunci catatan sebagai nama file
+//         await noteRef.update({ imageUrl });
+//       }
+//     } else {
+//       Alert.alert("Error", "Login Terlebih Dahulu");
+//     }
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
-  return notesRef
-    .once("value")
-    .then((snapshot) => {
-      const notesData = snapshot.val();
-      if (notesData) {
-        const notesArray = Object.entries(notesData).map(([noteId, noteData]) => ({
-          noteId,
-          ...noteData,
-        }));
-        return notesArray;
-      } else {
-        return [];
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching user notes:", error);
-      return [];
-    });
-};
+// export const getNote = async () => {
+//   const userData = await getData("user");
+//   const notesRef = FIREBASE.database().ref("notes/" + userData.uid);
+
+//   return notesRef
+//     .once("value")
+//     .then((snapshot) => {
+//       const notesData = snapshot.val();
+//       if (notesData) {
+//         const notesArray = Object.entries(notesData).map(
+//           ([noteId, noteData]) => ({
+//             noteId,
+//             ...noteData,
+//           })
+//         );
+//         return notesArray;
+//       } else {
+//         return [];
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching user notes:", error);
+//       return [];
+//     });
+// };
 
 export const editNote = async (noteId, updatedData) => {
   try {
@@ -111,7 +121,9 @@ export const editNote = async (noteId, updatedData) => {
 
     if (userData) {
       // Perbarui catatan berdasarkan noteId
-      const noteRef = FIREBASE.database().ref(`notes/${userData.uid}/${noteId}`);
+      const noteRef = FIREBASE.database().ref(
+        `notes/${userData.uid}/${noteId}`
+      );
       const snapshot = await noteRef.once("value");
       const existingNote = snapshot.val();
 
@@ -160,3 +172,72 @@ export const deleteNote = async (noteId) => {
   }
 };
 
+export const uploadImage = async (image, filename) => {
+  try {
+    if (!image) {
+      throw new Error("No image file selected");
+    }
+
+    const storageRef = FIREBASE.storage().ref();
+    const imageRef = storageRef.child(`images/${filename}`);
+
+    const snapshot = await imageRef.put(image);
+    const downloadURL = await snapshot.ref.getDownloadURL();
+
+    return downloadURL;
+  } catch (error) {
+    console.error("Error uploading image: ", error);
+    throw error;
+  }
+};
+
+export const addNote = async (data) => {
+  try {
+    // Ambil data yg sudah login dari fungsi 'getData'
+    const userData = await getData("user");
+
+    if (userData) {
+      // Tambah note sesuai uid
+      const dataBaru = {
+        ...data,
+        uid: userData.uid,
+      };
+
+      await FIREBASE.database()
+        .ref("notes/" + userData.uid)
+        .push(dataBaru);
+
+      console.log("Note added successfully");
+    } else {
+      Alert.alert("Error", "Login Terlebih Dahulu");
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getNote = async () => {
+  const userData = await getData("user");
+  const notesRef = FIREBASE.database().ref("notes/" + userData.uid);
+
+  return notesRef
+    .once("value")
+    .then((snapshot) => {
+      const notesData = snapshot.val();
+      if (notesData) {
+        const notesArray = Object.entries(notesData).map(
+          ([noteId, noteData]) => ({
+            noteId,
+            ...noteData,
+          })
+        );
+        return notesArray;
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user notes:", error);
+      return [];
+    });
+};

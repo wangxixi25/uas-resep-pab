@@ -6,6 +6,21 @@ import Register from "./Register";
 import Splash from "./Splash";
 import EditNote from "./EditNote";
 import GetStarted from "./GetStarted";
-import EditResep from  "./EditResep"
-export { Home, Profile, Add, Login, Register, Splash, EditNote, GetStarted, EditResep, };
-
+import EditResep from "./EditResep";
+import ResepPerCategory from "./ResepPerCategory";
+import DetailResep from "./DetailResep";
+import MyResep from "./MyResep";
+export {
+  Home,
+  Profile,
+  Add,
+  Login,
+  Register,
+  Splash,
+  EditNote,
+  GetStarted,
+  EditResep,
+  ResepPerCategory,
+  DetailResep,
+  MyResep,
+};
