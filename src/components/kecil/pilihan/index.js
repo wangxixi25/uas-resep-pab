@@ -79,9 +79,9 @@ const Pilihan = ({
               >
                 <SelectDragIndicator />
               </SelectDragIndicatorWrapper>
-              <SelectItem label={"Heavy meal"} value={null} />
-              <SelectItem label={"Drinks"} value={null} />
-              <SelectItem label={"Desert"} value={null} />
+              {datas.map((data, index) => (
+                <SelectItem key={index} label={data} value={data} />
+              ))}
             </SelectContent>
           </SelectPortal>
         </Select>

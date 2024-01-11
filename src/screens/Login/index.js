@@ -18,29 +18,20 @@ import { TouchableOpacity } from "react-native";
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [isSuccessAlert, setIsSuccessAlert] = useState(false);
-
-  const toggleAlert = (message, isSuccess) => {
-    setAlertMessage(message);
-    setIsSuccessAlert(isSuccess);
-    setShowAlert(true);
-  };
+  const [error, setError] = useState(""); // State untuk pesan kesalahan
 
   const login = () => {
     if (email && password) {
       loginUser(email, password)
         .then((user) => {
-          toggleAlert("Login berhasil!", true); // Menampilkan alert sukses
           navigation.replace("MainApp");
         })
         .catch((error) => {
-          toggleAlert("Login gagal"); // Menampilkan alert kesalahan
+          // Menampilkan pesan kesalahan di bawah formulir
+          setError("Login gagal. Periksa email dan password Anda.");
         });
     }
   };
-
   return (
     <Box flex={1} backgroundColor="$white" justifyContent="center">
       <TouchableOpacity // Gunakan TouchableOpacity untuk aksi ketika diklik
@@ -88,14 +79,18 @@ const Login = ({ navigation }) => {
             height={"$10"}
             onChangeText={(text) => setPassword(text)}
             value={password}
+            secureTextEntry={true} // This prop will hide the password characters
           />
         </FormControl>
+        <Text size="sm" color="red" textAlign="center">
+          {error} {/* Tampilkan pesan kesalahan di sini */}
+        </Text>
         <Box flexDirection="column" my={"$5"}>
           <Button
             title="Login"
             type="text"
             width={"$full"}
-            padding={"$3"}
+            padding={"$1.5"}
             onPress={() => login()}
           />
         </Box>
@@ -115,15 +110,6 @@ const Login = ({ navigation }) => {
           Sign Up
         </Text>
       </Text>
-      {showAlert && (
-        <Modal isOpen={showAlert} onClose={() => toggleAlert()}>
-          <ModalBackdrop />
-          <Alert mx="$" action="error" variant="solid">
-            <AlertText fontWeight="$bold">Error!</AlertText>
-            <AlertText>{alertMessage}</AlertText>
-          </Alert>
-        </Modal>
-      )}
     </Box>
   );
 };

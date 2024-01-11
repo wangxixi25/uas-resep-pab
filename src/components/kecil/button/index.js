@@ -14,6 +14,7 @@ const Button = ({ padding, title, onPress, fontSize }) => {
         color="$white"
         textAlign="center"
         fontSize={fontSize ? fontSize : "$lg"}
+        padding={padding ? padding : "$1"}
       >
         {title}
       </Text>

@@ -9,16 +9,18 @@ import GetStarted from "./GetStarted";
 import EditResep from "./EditResep";
 import ResepPerCategory from "./ResepPerCategory";
 import DetailResep from "./DetailResep";
+import MyResep from "./MyResep";
 export {
-	Home,
-	Profile,
-	Add,
-	Login,
-	Register,
-	Splash,
-	EditNote,
-	GetStarted,
-	EditResep,
-	ResepPerCategory,
-	DetailResep,
+  Home,
+  Profile,
+  Add,
+  Login,
+  Register,
+  Splash,
+  EditNote,
+  GetStarted,
+  EditResep,
+  ResepPerCategory,
+  DetailResep,
+  MyResep,
 };
