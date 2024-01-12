@@ -15,6 +15,7 @@ import { Input, Button } from "../../components";
 import { loginUser } from "../../actions/AuthAction";
 import { TouchableOpacity } from "react-native";
 
+// state yang digunakan untuk menyimpan nilai dari input email, password dan error
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

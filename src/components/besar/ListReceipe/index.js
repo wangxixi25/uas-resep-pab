@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
 import firebase from "firebase/compat";
 
-const ListNote = ({
+const ListReceipe = ({
   judul,
   image,
   isi,
@@ -146,17 +146,17 @@ const ListNote = ({
           </VStack>
         </HStack>
 
-        {/* <HStack>
+        <HStack>
         <Pressable onPress={handleEditClick}>
           <IconEdit />
         </Pressable>
         <Pressable onPress={handleDeleteClick}>
           <IconDelete />
         </Pressable>
-      </HStack> */}
+      </HStack>
       </Box>
     </Pressable>
   );
 };
 
-export default ListNote;
+export default ListReceipe;
